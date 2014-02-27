@@ -6,6 +6,8 @@ The demo protein is [ERBB2_HUMAN](http://www.uniprot.org/uniprot/P04626), where 
 
 Check the help menu to have more details on usage.
 
+The application can be used live at [http://research-pub.gene.com/pviz/app/proteomics-3d](http://research-pub.gene.com/pviz/app/proteomics-3d)
+
 **Warning:** you must have a WebGL enabled browser to benefit fully from the application (beware of older Internet Explorer and Mac OS X versions).
 
 ## Data source
