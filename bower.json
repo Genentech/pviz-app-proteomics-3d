@@ -1,0 +1,12 @@
+{
+  "name": "pviz-app-phospho-3d",
+  "private": true,
+  "dependencies": {
+    "sass-bootstrap": "~3.0.0",
+    "modernizr": "~2.6.2",
+    "jquery": ">=2.0",
+    "pviz": "*",
+    "threejs": "*"
+  },
+  "devDependencies": {}
+}

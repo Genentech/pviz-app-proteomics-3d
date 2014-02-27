@@ -1,0 +1,12 @@
+TODO
+
+DOING
+
+DONE
+- waring is no WEBGL
+- help page
+- add legend + random warning on pviz panel + how to
+- ajax load pdb from pdb web site
+- 3D: make it more rectanglish
+- hide canvas on start, clean it on reload
+- 3D: add pdb details  on right

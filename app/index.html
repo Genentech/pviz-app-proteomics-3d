@@ -1,0 +1,271 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>pviz proteomics example</title>
+    <link rel="icon" href="favicon.ico">
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- endbuild -->
+    <!-- build:css styles/third-parties.css -->
+    <link rel="stylesheet" href="bower_components/pviz/src/css/pviz-core.css">
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pviz-customization.css">
+    <!-- endbuild -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">pviz proteomics 3D example</a>
+        </div>
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a style="cursor:pointer" data-toggle="modal" data-target="#modal-help"> Help </a>
+                </li>
+                <li>
+                    <a href="http://github.com/genentech/pviz-apps/proteomics-3d">github</a>
+                </li>
+
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            This application displays proteomics data on the the 2D sequence and ties them to 3D structures.
+            It is aimed at being a demonstration of the capabilities of the <a href="http://github.com/genentech/pviz/">pViz.js
+            JavaScript library</a> to display customizable protein features on the sequence.
+            <p>
+                The demo protein is <a href="http://www.uniprot.org/uniprot/P04626">ERBB2_HUMAN</a>, where both the PSM
+                (Peptide/Spectrum matches) and PTM have be randomly assigned. PDB references and sequence are parsed
+                from the Uniprot text file via the <a href="http://github.com/genentech/uniprot-js">Uniprot.js
+                JavaScript library</a>, PDB files are uploaded from the <a href="http://www.rcsb.org/">the Protein Data
+                Bank</a>. All the computations are done on the browser side.
+            </p>
+
+            <p>
+                <strong>How to use:</strong> click on a green pdb feature to open the 3D structure, where both PSM and
+                PTM are mapped. Scrolling over the sequence will make a red pointer synchronize with both the 2D and 3D
+                positions. You can zoom in the 2D by dragging the mouse and then zoom out by double clicking. The 3D
+                structure can be turned around, zoomed and moved with the mouse.
+            </p>
+
+            <p>
+                <strong>Legend:</strong> the blue bar represents peptide match coverage, and the circle represents two
+                types of modifications (the size of the circle showing the abundance of the modification). The green bar
+                shows the coverage by 3D structures.
+            </p>
+        </div>
+    </div>
+    <div id="pviz" class="row">
+
+    </div>
+    <div id="pdb" class="row" style="display:none">
+        <div id="glmol" class="col-lg-8"></div>
+        <div id="pdb-details" class="col-lg-4"></div>
+    </div>
+
+</div>
+<div class="footer container">
+    <div class="row">
+        <div class="col-lg-5 pull-right" style="text-align: right">
+            © Genentech Inc. 2014
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:800px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h2 class="modal-title" id="myModalLabel">A browser side only application to view 2D and 3D proteomics
+                    features</h2>
+            </div>
+            <div class="modal-body">
+                This application displays proteomics data (Peptide/Spectrum matches and PTM quantification information)
+                and ties them to 3D structures read from PDB files. It is aimed at being a demonstration of the
+                capabilities of the <a href="http://github.com/genentech/pviz/">pViz JavaScript library</a> to display
+                customizable protein features on the sequence.
+                <p>
+                    The demo protein is <a href="http://www.uniprot.org/uniprot/P04626">ERBB2_HUMAN</a>, where both the
+                    PSM and PTM have be randomly assigned. PDB and sequence is parsed from the Uniprot text file via the
+                    <a href="http://github.com/genentech/uniprot-js">Uniprot.js JavaScript library</a>.
+                </p>
+
+                <p>
+                    <strong>Legend:</strong> the blue bar represents peptide match coverage, and the circle represents
+                    two types of modifications (the size of the circle showing the abundance of the modification). The
+                    green bar shows the coverage by 3D structures.
+                </p>
+
+                <p>
+                    <strong>How to use:</strong> <underline>click on a green pdb feature</underline> to open the 3D structure, where both PSM
+                    and PTM are mapped. <underline>Scrolling over the sequence</underline> will make a red pointer synchronize with both the 2D
+                    and 3D positions. You can <underline>zoom in the 2D</underline> by dragging the mouse and then zoom out by double clicking.
+                    The 3D structure can be turned around, zoomed and moved with the mouse.
+                </p>
+
+                <p>
+                    <strong>Warning:</strong> you must have a WebGL enabled browser to benefit fully from the
+                    application (beware of older Internet Explorer and Mac OS X versions).
+                </p>
+                <h4>Data source</h4>
+                Uniprot text file is downloaded dynamically from <a href="http://www.uniprot.org/uniprot/">Uniprot web
+                site</a>.
+                Once a 3D structure is selected, the PDB file is downloaded from the <a href="http://www.rcsb.org">Protein
+                Data Bank</a> web site.
+                Both theses files are parsed in JavaScript to extract the meaningful information.
+                <p>
+                    For the example, PSM and PTM information reside in 2 TSV files stored in the data directory
+                    (information was populated randomly).
+                </p>
+
+                <h5>How to adapt the application?</h5>
+                An effort was made to decorrelate data from the application.
+                It is straightforwards to replace the protein id and the proteomics information sources by other ones.
+
+                <h4>A note to developers</h4>
+                <h5>Run it locally</h5>
+                Clone the project, then
+                <code>
+                    npm install
+                </code>
+                and
+                <code>
+                    grunt server
+                </code>
+                (you may have to to add the local
+                <code>
+                    grunt
+                </code> binary in your path if it was not installed globally)
+                . That should make it work!
+
+                <h5>A note on GLmol.js</h5>
+                Although GLmol.js was a key component of this application, we had to <a
+                    href="https://github.com/alexmasselot/glmol">fork</a> it and make it compatible with more recent
+                versions of <a href="http://threejs.org/">Three.js</a> (thanks to the authors for their help on that
+                path).
+
+                <h4>Authors</h4>
+                This application is based on the versatile <a href="http://github.com/genentech/pviz">pViz.js: a dynamic
+                JavaScript & SVG library for visualization of protein sequence features</a> JavaScript library, written
+                by <a href="mailto://masselot.alexandre@gene.com">Alexandre Masselot</a> and <a
+                    href="mailto://mukhyala.kiran@gene.com">Kiran Mukhyala</a>, from the Bioinformatics & Computational
+                Biology Department, at <a href="http://www.gene.com">Genentech Inc.</a> Research. <h4>Reference</h4>
+                Please provide a reference to this application by citing:
+                <pre>xxx.xx 2014</pre>
+                <h4>Thanks to</h4>
+                This app is aimed at demonstrating pViz library. But it would never have existed without a myriad of
+                other useful an inspiring projects: <a href="http://d3js.org">d3.js</a>, <a
+                    href="http://colorbrewer2.org/">color brewer</a>,<a
+                    href="http://webglmol.sourceforge.jp/index-en.html">GLMol.js</a> (and more precisely the <a
+                    href="https://github.com/alexmasselot/glmol">forked</a> version to work with recent Three.js), <a
+                    href="http://threejs.org/">Three.js</a>, <a href="http://gruntjs.com/">grunt</a>, <a
+                    href="https://npmjs.org/package/bower">bower</a>, <a
+                    href="http://getbootstrap.com/css/">bootstrap</a>, <a href="http://jquery.com/">jquery</a>, <a
+                    href="http://backbonejs.org/">backbone</a>, <a href="http://requirejs.org/">require.js</a>, <a
+                    href="http://underscorejs.org/">underscore</a>. <h4>Licence</h4>
+
+                <div style="text-align:justify">
+                    Redistribution and use in source and binary forms are permitted
+                    provided that the above copyright notice and this paragraph are
+                    duplicated in all such forms and that any documentation,
+                    advertising materials, and other materials related to such
+                    distribution and use acknowledge that the software was developed
+                    by the Bioinformatics and Computational Biology Department, Genentech Inc. The name of the
+                    Genentech may not be used to endorse or promote products derived
+                    from this software without specific prior written permission.
+                    THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+                    IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+                    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+                </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-right">
+                    © Genentech Inc. 2014
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/pviz/dist/pviz-bundle.js"></script>
+<script src="bower_components/threejs/build/three.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    ( function (b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] = function () {
+            (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = '//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+</script>
+
+<!-- build:js scripts/main.js -->
+<script src="lib/uniprot.js"></script>
+<script src="lib/GLmol.js"></script>
+<script src="scripts/pviz-customization.js"></script>
+<script src="scripts/main.js"></script>
+<!-- endbuild -->
+
+<!-- build:js scripts/plugins.js -->
+<script src="bower_components/sass-bootstrap/js/affix.js"></script>
+<script src="bower_components/sass-bootstrap/js/alert.js"></script>
+<script src="bower_components/sass-bootstrap/js/dropdown.js"></script>
+<script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
+<script src="bower_components/sass-bootstrap/js/modal.js"></script>
+<script src="bower_components/sass-bootstrap/js/transition.js"></script>
+<script src="bower_components/sass-bootstrap/js/button.js"></script>
+<script src="bower_components/sass-bootstrap/js/popover.js"></script>
+<script src="bower_components/sass-bootstrap/js/carousel.js"></script>
+<script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
+<script src="bower_components/sass-bootstrap/js/collapse.js"></script>
+<script src="bower_components/sass-bootstrap/js/tab.js"></script>
+<!-- endbuild -->
+</body>
+</html>

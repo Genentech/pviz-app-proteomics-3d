@@ -1,0 +1,40 @@
+g.feature.data.psm line {
+    stroke: #7570b3;
+    stroke-width: 4px;
+}
+
+g.feature.data.pdb_coverage {
+    cursor: pointer;
+}
+
+g.feature.data.pdb_coverage line.line-background {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+g.feature.data.pdb_coverage line.chain {
+    stroke: #1b9e77;
+    stroke-width: 5px;
+}
+g.feature.data.pdb_coverage.x_ray line.chain {
+}
+g.feature.data.pdb_coverage.nmr line.chain {
+}
+
+/*  #66a61e #e7298a #1b9e77 #d95f02*/
+g.feature.data.ptm circle {
+    fill: gray;
+    fill-opacity: 0.5;
+}
+g.feature.data.ptm.phospho circle {
+    fill: #d95f02;
+}
+g.feature.data.ptm.methyl circle {
+    fill: #1b9e77;
+}
+
+g.feature.data.aa-position text {
+    text-anchor: end;
+    font-size: 1em;
+    font-family: monospace;
+}

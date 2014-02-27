@@ -1,0 +1,11 @@
+position	modif	quanti
+153	Methyl	100
+217	Phospho	1200
+218	Phospho	700
+335	Methyl	200
+347	Methyl	800
+546	Phospho	1300
+548	Methyl	300
+732	Phospho	700
+734	Phospho	900
+888	Methyl	100
