@@ -35,7 +35,7 @@ Et Voilà
 
 ###Deploy
 
-    grunt build
+    grunt dist
     rsync --recursive --delete dist/* your.host:/your/path/
 
 ###A note on GLmol.js
