@@ -40,13 +40,15 @@
             <a class="navbar-brand">pviz proteomics 3D example</a>
         </div>
         <div class="navbar-collapse collapse">
-
-            <ul class="nav navbar-nav">
-                <li><a href="../vep">Variant effect predictor app</a></li>
-                <li><a href="../../examples/">pViz.js atomic examples</a></li>
-            </ul>
-
             <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>more pViz</strong><b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../vep">Variant effect predictor app</a></li>
+                        <li><a href="../../examples/">pViz.js atomic examples</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a style="cursor:pointer" data-toggle="modal" data-target="#modal-help"> Help </a>
                 </li>
@@ -132,9 +134,15 @@
                 </p>
 
                 <p>
-                    <strong>How to use:</strong> <underline>click on a green pdb feature</underline> to open the 3D structure, where both PSM
-                    and PTM are mapped. <underline>Scrolling over the sequence</underline> will make a red pointer synchronize with both the 2D
-                    and 3D positions. You can <underline>zoom in the 2D</underline> by dragging the mouse and then zoom out by double clicking.
+                    <strong>How to use:</strong>
+                    <underline>click on a green pdb feature</underline>
+                    to open the 3D structure, where both PSM
+                    and PTM are mapped.
+                    <underline>Scrolling over the sequence</underline>
+                    will make a red pointer synchronize with both the 2D
+                    and 3D positions. You can
+                    <underline>zoom in the 2D</underline>
+                    by dragging the mouse and then zoom out by double clicking.
                     The 3D structure can be turned around, zoomed and moved with the mouse.
                 </p>
 
@@ -236,7 +244,10 @@
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-    ( function (b, o, i, l, e, r) {
+
+    $('.dropdown-toggle').dropdown();
+
+    (function (b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;
         b[l] || (b[l] = function () {
             (b[l].q = b[l].q || []).push(arguments)
