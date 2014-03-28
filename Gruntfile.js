@@ -386,7 +386,7 @@ module.exports = function (grunt) {
         ]);
     });
 
-    grunt.registerTask('dist', [
+    grunt.registerTask('build', [
         'clean:dist',
         'useminPrepare',
         'concurrent:dist',
