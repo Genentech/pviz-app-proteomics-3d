@@ -6,7 +6,8 @@
     "modernizr": "~2.6.2",
     "jquery": "~1.9",
     "pviz": "*",
-    "threejs": "*"
+    "threejs": "*",
+    "uniprot": "*"
   },
   "devDependencies": {}
 }
